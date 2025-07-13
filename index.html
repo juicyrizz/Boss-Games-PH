@@ -32,6 +32,28 @@
       .animate-kenburns {
         animation: kenburns 30s ease-out alternate-reverse infinite;
       }
+
+      /* Text Gradient Animation */
+      @keyframes text-gradient {
+        to {
+          background-position: 200% center;
+        }
+      }
+      .animate-text-gradient {
+        background-image: linear-gradient(
+          to right,
+          #6366f1, /* indigo-500 */
+          #a855f7, /* purple-500 */
+          #ec4899, /* pink-500 */
+          #a855f7, /* purple-500 */
+          #6366f1  /* indigo-500 */
+        );
+        background-size: 200% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: text-gradient 5s linear infinite;
+      }
     </style>
   <script type="importmap">
 {
@@ -42,7 +64,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-gray-900 text-gray-200 font-sans antialiased">
     <div id="root"></div>
