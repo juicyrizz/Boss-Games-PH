@@ -20,7 +20,7 @@ const HeroComponent = forwardRef<HTMLElement, HeroProps>(({ videosRef }, ref) =>
       
       <div className="relative z-10 p-4">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold uppercase tracking-tighter text-white">
-          <span className="block mb-2 text-indigo-400 drop-shadow-[0_2px_2px_rgba(79,70,229,0.8)]">BOSS GAMES PH</span>
+          <span className="block mb-2 animate-text-gradient drop-shadow-[0_2px_2px_rgba(79,70,229,0.8)]">BOSS GAMES PH</span>
         </h1>
         <p className="mt-4 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light tracking-wide">
           Pro-level plays, hilarious moments, and a community that feels like family. Welcome to the hub.
