@@ -118,6 +118,35 @@ const App: React.FC = () => {
     };
   }, [fetchVideos]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+      }
+    );
+
+    // Use a timeout to ensure all components have rendered
+    const timer = setTimeout(() => {
+        const targets = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
+        targets.forEach((target) => observer.observe(target as Element));
+    }, 100);
+
+
+    return () => {
+      clearTimeout(timer);
+      const targets = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
+      targets.forEach((target) => observer.unobserve(target as Element));
+    };
+  }, []); // Run this effect only once on mount
+
 
   return (
     <div className="relative">
