@@ -1,6 +1,4 @@
 import React, { forwardRef } from 'react';
-import { SOCIAL_LINKS } from '../constants';
-import SocialLinks from './SocialLinks';
 import { scrollToSection } from '../utils';
 
 interface HeroProps {
@@ -34,9 +32,6 @@ const HeroComponent = forwardRef<HTMLElement, HeroProps>(({ videosRef }, ref) =>
              <button onClick={() => scrollToSection(videosRef)} className="w-full sm:w-auto inline-block bg-gray-700/50 text-white font-bold py-3 px-8 rounded-full uppercase tracking-wider hover:bg-gray-600/70 transform hover:scale-105 transition-all duration-300">
                 Latest Videos
             </button>
-        </div>
-        <div className="mt-12">
-            <SocialLinks links={SOCIAL_LINKS} className="justify-center" />
         </div>
       </div>
     </section>
