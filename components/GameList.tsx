@@ -60,13 +60,15 @@ const GameCard: React.FC<{ game: Game }> = React.memo(({ game }) => {
 const GameListComponent = forwardRef<HTMLElement, {}>((props, ref) => {
   return (
     <Section id="games" ref={ref} className="bg-gray-900">
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 scroll-animate">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Games We Play</h2>
         <p className="mt-2 text-lg text-gray-400">A selection of games featured on the channel. Click to visit on Steam.</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {GAMES_LIST.map((game) => (
-            <GameCard key={game.id} game={game} />
+        {GAMES_LIST.map((game, index) => (
+            <div key={game.id} className="scroll-animate" style={{ transitionDelay: `${150 + index * 100}ms`}}>
+                <GameCard game={game} />
+            </div>
         ))}
       </div>
     </Section>
