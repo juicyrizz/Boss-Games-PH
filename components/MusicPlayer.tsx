@@ -49,7 +49,7 @@ const MusicPlayer: React.FC = () => {
 
   return (
     <>
-      <audio ref={audioRef} src="/tokyo.mp3" loop preload="auto" aria-hidden="true" />
+      <audio ref={audioRef} src="music/tokyo.mp3" loop preload="auto" aria-hidden="true" />
       <button
         onClick={togglePlay}
         className="fixed bottom-5 right-5 z-50 w-14 h-14 bg-indigo-600/80 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-500 transition-all duration-300 transform hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
