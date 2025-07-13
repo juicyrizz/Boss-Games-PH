@@ -54,6 +54,28 @@
         -webkit-text-fill-color: transparent;
         animation: text-gradient 5s linear infinite;
       }
+
+      /* Scroll-triggered animation */
+      .scroll-animate, .scroll-animate-left, .scroll-animate-right {
+        opacity: 0;
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .scroll-animate {
+        transform: translateY(30px);
+      }
+      .scroll-animate-left {
+        transform: translateX(-30px);
+      }
+      .scroll-animate-right {
+        transform: translateX(30px);
+      }
+
+      .scroll-animate.is-visible,
+      .scroll-animate-left.is-visible,
+      .scroll-animate-right.is-visible {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
     </style>
   <script type="importmap">
 {
