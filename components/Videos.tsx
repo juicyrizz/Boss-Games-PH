@@ -57,7 +57,7 @@ interface VideosProps {
 const VideosComponent = forwardRef<HTMLElement, VideosProps>(({ videos, loading, error }, ref) => {
   return (
     <Section id="videos" ref={ref} className="bg-gray-800/40">
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 scroll-animate">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Latest Videos</h2>
         <p className="mt-2 text-lg text-gray-400">Highlights, montages, and full gameplays from my YouTube channel.</p>
       </div>
@@ -68,7 +68,11 @@ const VideosComponent = forwardRef<HTMLElement, VideosProps>(({ videos, loading,
         {loading ? (
           [...Array(6)].map((_, i) => <VideoCardSkeleton key={i} />)
         ) : (
-          videos.map(video => <VideoCard key={video.id} video={video} />)
+          videos.map((video, index) => (
+            <div key={video.id} className="scroll-animate" style={{ transitionDelay: `${150 + index * 100}ms` }}>
+              <VideoCard video={video} />
+            </div>
+          ))
         )}
       </div>
     </Section>
