@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { scrollToSection } from '../utils';
 
@@ -43,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ sectionRefs }) => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-900/80 backdrop-blur-lg shadow-lg shadow-indigo-500/10' : 'bg-transparent'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-900/60 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-indigo-500/10' : 'bg-transparent'}`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <button onClick={() => scrollToSection(sectionRefs.home)} className="text-2xl font-bold text-white tracking-widest text-left">
