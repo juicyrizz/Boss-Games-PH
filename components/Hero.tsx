@@ -26,10 +26,10 @@ const HeroComponent = forwardRef<HTMLElement, HeroProps>(({ videosRef }, ref) =>
           Pro-level plays, hilarious moments, and a community that feels like family. Welcome to the hub.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://www.youtube.com/channel/UCNxWiktsb9MOQxuZDdYrtxw" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-block bg-indigo-600 text-white font-bold py-3 px-8 rounded-full uppercase tracking-wider hover:bg-indigo-500 transform hover:scale-105 transition-all duration-300">
+            <a href="https://www.youtube.com/channel/UCNxWiktsb9MOQxuZDdYrtxw" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-block text-white font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-all duration-300 bg-indigo-600/40 hover:bg-indigo-500/60 border-2 border-indigo-500/80 backdrop-blur-sm transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/40">
                 YouTube Channel
             </a>
-             <button onClick={() => scrollToSection(videosRef)} className="w-full sm:w-auto inline-block bg-gray-700/50 text-white font-bold py-3 px-8 rounded-full uppercase tracking-wider hover:bg-gray-600/70 transform hover:scale-105 transition-all duration-300">
+             <button onClick={() => scrollToSection(videosRef)} className="w-full sm:w-auto inline-block text-white font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-all duration-300 bg-gray-700/30 hover:bg-gray-700/50 border-2 border-gray-500/80 backdrop-blur-sm transform hover:scale-105 hover:shadow-lg hover:shadow-gray-500/40">
                 Latest Videos
             </button>
         </div>
