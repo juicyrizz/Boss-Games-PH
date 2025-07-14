@@ -1,4 +1,3 @@
-
 import React, { forwardRef } from 'react';
 import Section from './Section';
 import type { Game } from '../types';
@@ -19,7 +18,7 @@ const GameCard: React.FC<{ game: Game }> = React.memo(({ game }) => {
         href={game.steamUrl} 
         target="_blank" 
         rel="noopener noreferrer" 
-        className="group relative block aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-900"
+        className="group relative block aspect-[4/3] rounded-lg overflow-hidden shadow-lg bg-gray-900/50 backdrop-blur-md border border-gray-700/50 transition-all duration-300"
         aria-label={`View ${game.name} on Steam`}
       >
         {/* Animated Glow Border */}
@@ -59,7 +58,7 @@ const GameCard: React.FC<{ game: Game }> = React.memo(({ game }) => {
 
 const GameListComponent = forwardRef<HTMLElement, {}>((props, ref) => {
   return (
-    <Section id="games" ref={ref} className="bg-gray-900">
+    <Section id="games" ref={ref} className="bg-transparent">
       <div className="text-center mb-12 scroll-animate">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Games We Play</h2>
         <p className="mt-2 text-lg text-gray-400">A selection of games featured on the channel. Click to visit on Steam.</p>
