@@ -1,17 +1,31 @@
 
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import Section from './Section';
 import type { Video } from '../types';
 
 const VideoCard: React.FC<{ video: Video }> = React.memo(({ video }) => {
   const videoUrl = `https://www.youtube.com/watch?v=${video.id}`;
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
   return (
     <a href={videoUrl} target="_blank" rel="noopener noreferrer" className="block group" aria-label={`Watch ${video.title} on YouTube`}>
-      <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 transform hover:-translate-y-2">
-        <div className="relative">
-          <img src={video.thumbnailUrl} alt={video.title} className="w-full h-48 object-cover" loading="lazy" />
+      <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-indigo-500/30 transition-shadow duration-300">
+        <div className="relative w-full h-48">
+          {/* Image */}
+          <img
+            src={video.thumbnailUrl}
+            alt={video.title}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            loading="lazy"
+            onLoad={() => setIsImageLoaded(true)}
+          />
+          {/* Skeleton for image */}
+          {!isImageLoaded && (
+            <div className="absolute inset-0 w-full h-full bg-gray-700 animate-pulse"></div>
+          )}
+          
           <div className="absolute inset-0 bg-black/20 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
-              <div className="w-16 h-16 bg-indigo-600/80 rounded-full flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
+              <div className="w-16 h-16 bg-indigo-600/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                   </svg>
@@ -68,8 +82,8 @@ const VideosComponent = forwardRef<HTMLElement, VideosProps>(({ videos, loading,
         {loading ? (
           [...Array(6)].map((_, i) => <VideoCardSkeleton key={i} />)
         ) : (
-          videos.map((video, index) => (
-            <div key={video.id} className="scroll-animate" style={{ transitionDelay: `${150 + index * 100}ms` }}>
+          videos.map((video) => (
+            <div key={video.id}>
               <VideoCard video={video} />
             </div>
           ))
