@@ -52,7 +52,7 @@
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: text-gradient 5s linear infinite;
+        animation: text-gradient 3s linear infinite;
       }
 
       /* Scroll-triggered animation */
@@ -91,6 +91,15 @@
         stroke-dashoffset: 48;
         animation: success-stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
       }
+
+      /* Gaming background for body */
+      body {
+        background-color: #0c0a18;
+        background-image: 
+          radial-gradient(ellipse at center, rgba(31, 41, 55, 0.5) 0%, transparent 70%),
+          radial-gradient(ellipse at top left, rgba(79, 70, 229, 0.25) 0%, transparent 50%),
+          radial-gradient(ellipse at bottom right, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
+      }
     </style>
   <script type="importmap">
 {
@@ -102,7 +111,7 @@
 }
 </script>
 </head>
-  <body class="bg-gray-900 text-gray-200 font-sans antialiased">
+  <body class="bg-gray-900 text-gray-200 font-sans">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
