@@ -9,7 +9,7 @@ const ContactComponent = forwardRef<HTMLElement, {}>((props, ref) => {
   const [formStatus, setFormStatus] = useState<FormStatus>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   
-  const inputStyles = "w-full bg-gray-900/30 backdrop-blur-sm border border-gray-700 text-white rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-300 placeholder-gray-400 disabled:opacity-50";
+  const inputStyles = "w-full bg-gray-800/50 border border-gray-600 text-white rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-300 placeholder-gray-400 disabled:opacity-50";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,9 +44,9 @@ const ContactComponent = forwardRef<HTMLElement, {}>((props, ref) => {
   const renderContent = () => {
     if (formStatus === 'success') {
       return (
-        <div className="text-center p-6 bg-gray-800/60 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ minHeight: '350px' }}>
+        <div className="text-center p-6 bg-indigo-900/30 backdrop-blur-lg border border-indigo-500/50 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ minHeight: '350px' }}>
           <svg className="h-20 w-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-            <circle className="success-checkmark__circle stroke-current text-indigo-500" cx="26" cy="26" r="25" fill="none" strokeWidth="3"/>
+            <circle className="success-checkmark__circle stroke-current text-indigo-400" cx="26" cy="26" r="25" fill="none" strokeWidth="3"/>
             <path className="success-checkmark__check stroke-current text-white" fill="none" d="M14 27l5.917 4.917L37.5 22.5" strokeWidth="4"/>
           </svg>
           <h3 className="text-2xl font-bold text-white mt-5">Message Sent!</h3>
@@ -57,7 +57,7 @@ const ContactComponent = forwardRef<HTMLElement, {}>((props, ref) => {
 
     if (formStatus === 'error') {
       return (
-         <div className="text-center p-6 bg-red-900/20 border border-red-500/50 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ minHeight: '350px' }}>
+         <div className="text-center p-6 bg-red-900/30 backdrop-blur-lg border border-red-500/50 rounded-lg shadow-lg flex flex-col justify-center items-center" style={{ minHeight: '350px' }}>
           <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -65,7 +65,7 @@ const ContactComponent = forwardRef<HTMLElement, {}>((props, ref) => {
           <p className="text-red-300 mt-2 mb-6">{errorMessage}</p>
           <button 
               onClick={() => setFormStatus('idle')}
-              className="w-full sm:w-auto inline-block bg-indigo-600 text-white font-bold py-3 px-8 rounded-full uppercase tracking-wider hover:bg-indigo-500 transform hover:scale-105 transition-all duration-300"
+              className="w-full sm:w-auto inline-block text-white font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-all duration-300 bg-indigo-600/40 hover:bg-indigo-500/60 border-2 border-indigo-500/80 backdrop-blur-sm transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/40"
             >
               Try Again
             </button>
@@ -115,7 +115,7 @@ const ContactComponent = forwardRef<HTMLElement, {}>((props, ref) => {
             <button 
               type="submit"
               disabled={formStatus === 'sending'}
-              className="w-full sm:w-auto inline-flex items-center justify-center bg-indigo-600 text-white font-bold py-3 px-8 rounded-full uppercase tracking-wider hover:bg-indigo-500 transform hover:scale-105 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
+              className="w-full sm:w-auto inline-flex items-center justify-center text-white font-bold py-3 px-8 rounded-lg uppercase tracking-wider transition-all duration-300 bg-indigo-600/40 hover:bg-indigo-500/60 border-2 border-indigo-500/80 backdrop-blur-sm transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-500/40 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
             >
               {formStatus === 'sending' ? (
                 <>
@@ -135,22 +135,24 @@ const ContactComponent = forwardRef<HTMLElement, {}>((props, ref) => {
   };
   
   return (
-    <Section id="contact" ref={ref} className="bg-gray-800/40">
+    <Section id="contact" ref={ref} className="bg-black/20">
       <div className="max-w-2xl mx-auto">
-        <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight scroll-animate">Get In Touch</h2>
-          <p className="mt-4 text-lg text-gray-300 scroll-animate" style={{ transitionDelay: '100ms' }}>
-            Have a business inquiry, a game suggestion, or just want to say hi? Fill out the form below. I'd love to hear from you!
-          </p>
-        </div>
-        
-        <div className="mt-12 scroll-animate" style={{ transitionDelay: '200ms' }}>
-          {renderContent()}
-        </div>
+        <div className="bg-gray-900/40 backdrop-blur-xl border border-white/10 rounded-xl p-8 sm:p-12 shadow-2xl">
+          <div className="text-center">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight scroll-animate">Get In Touch</h2>
+            <p className="mt-4 text-lg text-gray-300 scroll-animate" style={{ transitionDelay: '100ms' }}>
+              Have a business inquiry, a game suggestion, or just want to say hi? Fill out the form below. I'd love to hear from you!
+            </p>
+          </div>
+          
+          <div className="mt-12 scroll-animate" style={{ transitionDelay: '200ms' }}>
+            {renderContent()}
+          </div>
 
-        <div className="mt-16 text-center scroll-animate" style={{ transitionDelay: '300ms' }}>
-            <p className="text-gray-400 mb-4">Or find me on my socials:</p>
-            <SocialLinks links={SOCIAL_LINKS} className="justify-center space-x-8" />
+          <div className="mt-12 text-center scroll-animate" style={{ transitionDelay: '300ms' }}>
+              <p className="text-gray-400 mb-4">Or find me on my socials:</p>
+              <SocialLinks links={SOCIAL_LINKS} className="justify-center space-x-8" />
+          </div>
         </div>
       </div>
     </Section>
